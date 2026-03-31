@@ -1,1 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>PredictSafe</title>
+
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
+
+<!-- ICONS -->
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+    <i class="ri-menu-line" onclick="toggleMenu()"></i>
+
+    <img src="logo.png" class="logo">
+
+    <i class="ri-notification-3-line" onclick="triggerNotification()"></i>
+</div>
+
+<!-- SIDEBAR -->
+<div id="sidebar" class="sidebar">
+
+    <a onclick="loadPage('https://www.predictsafe.com/?filter=all-tips')">
+        <i class="ri-football-line"></i> Free Predictions
+    </a>
+
+    <a onclick="loadPage('https://www.predictsafe.com/previous-wins')">
+        <i class="ri-trophy-line"></i> VIP Wins
+    </a>
+
+    <a onclick="loadPage('https://www.predictsafe.com/subscriptions')">
+        <i class="ri-vip-crown-line"></i> VIP Packages
+    </a>
+
+    <a onclick="loadPage('https://www.predictsafe.com/login?returnUrl=%2Fcheckout%3Fplan%3Dcorrect-score%26duration%3D30%26country%3DUnited%2520States')">
+        <i class="ri-target-line"></i> Correct Score
+    </a>
+
+    <a onclick="openTelegram()">
+        <i class="ri-telegram-line"></i> Join Telegram
+    </a>
+
+    <a onclick="openContact()">
+        <i class="ri-customer-service-2-line"></i> Contact
+    </a>
+
+    <a onclick="loadPage('https://www.predictsafe.com/terms')">
+        <i class="ri-file-text-line"></i> Terms
+    </a>
+
+</div>
+
+<!-- MAIN -->
+<iframe id="appFrame" src="https://www.predictsafe.com/?filter=all-tips"></iframe>
+
+<script src="app.js"></script>
+
+</body>
+</html>
