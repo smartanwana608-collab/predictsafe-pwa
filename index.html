@@ -6,10 +6,7 @@
 
 <title>PredictSafe</title>
 
-<link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="styles.css">
-
-<!-- ICONS -->
 <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
 </head>
@@ -18,48 +15,53 @@
 
 <!-- TOP BAR -->
 <div class="topbar">
-    <i class="ri-menu-line" onclick="toggleMenu()"></i>
-
-    <img src="logo.png" class="logo">
-
-    <i class="ri-notification-3-line" onclick="triggerNotification()"></i>
+    <i class="ri-menu-line"></i>
+    <span class="logo-text">PredictSafe</span>
+    <i class="ri-notification-3-line"></i>
 </div>
 
-<!-- SIDEBAR -->
-<div id="sidebar" class="sidebar">
+<!-- HOME UI -->
+<div id="home">
 
-    <a onclick="loadPage('https://www.predictsafe.com/?filter=all-tips')">
-        <i class="ri-football-line"></i> Free Predictions
-    </a>
+    <div class="card" onclick="openPage('https://www.predictsafe.com/?filter=all-tips')">
+        ⚽ Free Predictions
+    </div>
 
-    <a onclick="loadPage('https://www.predictsafe.com/previous-wins')">
-        <i class="ri-trophy-line"></i> VIP Wins
-    </a>
+    <div class="card" onclick="openPage('https://www.predictsafe.com/previous-wins')">
+        🏆 Previous VIP Wins
+    </div>
 
-    <a onclick="loadPage('https://www.predictsafe.com/subscriptions')">
-        <i class="ri-vip-crown-line"></i> VIP Packages
-    </a>
+    <div class="card" onclick="openPage('https://www.predictsafe.com/subscriptions')">
+        💎 VIP Packages
+    </div>
 
-    <a onclick="loadPage('https://www.predictsafe.com/login?returnUrl=%2Fcheckout%3Fplan%3Dcorrect-score%26duration%3D30%26country%3DUnited%2520States')">
-        <i class="ri-target-line"></i> Correct Score
-    </a>
+    <div class="card" onclick="openPage('https://www.predictsafe.com/vip')">
+        👑 VIP Games
+    </div>
 
-    <a onclick="openTelegram()">
-        <i class="ri-telegram-line"></i> Join Telegram
-    </a>
+    <div class="card" onclick="openPage('https://www.predictsafe.com/login?returnUrl=%2Fcheckout%3Fplan%3Dcorrect-score')">
+        🎯 Correct Score
+    </div>
 
-    <a onclick="openContact()">
-        <i class="ri-customer-service-2-line"></i> Contact
-    </a>
+    <div class="card" onclick="openTelegram()">
+        📲 Join Telegram
+    </div>
 
-    <a onclick="loadPage('https://www.predictsafe.com/terms')">
-        <i class="ri-file-text-line"></i> Terms
-    </a>
+    <div class="card" onclick="openPage('https://www.predictsafe.com/terms')">
+        📄 Terms & Conditions
+    </div>
+
+    <div class="card" onclick="openWhatsApp()">
+        💬 Chat With Us
+    </div>
 
 </div>
 
-<!-- MAIN -->
-<iframe id="appFrame" src="https://www.predictsafe.com/?filter=all-tips"></iframe>
+<!-- VIEWER -->
+<div id="viewer">
+    <button onclick="goBack()">← Back</button>
+    <iframe id="frame"></iframe>
+</div>
 
 <script src="app.js"></script>
 
