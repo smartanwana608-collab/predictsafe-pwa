@@ -6,232 +6,72 @@
 
 <title>PredictSafe</title>
 
-<!-- PWA -->
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#020617">
 
 <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: white;
-}
-
-/* TOP BAR */
-.topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    background: #020617;
-    font-size: 18px;
-}
-
-.logo-text {
-    font-weight: bold;
-}
-
-/* HOME */
-#home {
-    padding: 15px;
-}
-
-/* CARD */
-.card {
-    background: linear-gradient(145deg, #1e293b, #020617);
-    padding: 16px;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: scale(1.02);
-}
-
-.card-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.icon {
-    font-size: 18px;
-}
-
-.arrow {
-    font-size: 22px;
-    opacity: 0.6;
-}
-
-/* INSTALL CARD */
-.install-card {
-    background: #1F8A5B;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.install-buttons {
-    margin-top: 10px;
-}
-
-.install-buttons button {
-    margin-right: 10px;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-/* VIEWER */
-#viewer {
-    display: none;
-    height: 100vh;
-}
-
-#viewer iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-.back-btn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 10;
-    padding: 8px 12px;
-}
-</style>
+<!-- OneSignal -->
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 
 </head>
 
 <body>
 
+<!-- SIDE MENU -->
+<div id="menu" class="menu">
+    <div class="menu-header">PredictSafe</div>
+
+    <div onclick="openPage('https://www.predictsafe.com/?filter=all-tips')">⚽ Free Predictions</div>
+    <div onclick="openPage('https://www.predictsafe.com/previous-wins')">🏆 VIP Wins</div>
+    <div onclick="openPage('https://www.predictsafe.com/subscriptions')">💎 VIP Packages</div>
+    <div onclick="openTelegram()">📲 Telegram</div>
+    <div onclick="openWhatsApp()">💬 Contact</div>
+</div>
+
 <!-- TOP BAR -->
 <div class="topbar">
-    <i class="ri-menu-line"></i>
-    <span class="logo-text">PredictSafe</span>
-    <i class="ri-notification-3-line"></i>
+    <i class="ri-menu-line" onclick="toggleMenu()"></i>
+    <span>PredictSafe</span>
+    <i class="ri-notification-3-line" onclick="subscribeUser()"></i>
+</div>
+
+<!-- INSTALL BANNER -->
+<div id="installBanner" class="install-banner">
+    Install PredictSafe App
+    <button onclick="installApp()">Install</button>
 </div>
 
 <!-- HOME -->
 <div id="home">
 
-    <!-- INSTALL -->
-    <div id="installCard" class="card install-card" style="display:none;">
-        Install our app to get instant tips & notifications
-        <div class="install-buttons">
-            <button onclick="installApp()">Install</button>
-            <button onclick="hideInstall()">Cancel</button>
-        </div>
-    </div>
-
     <div class="card" onclick="openPage('https://www.predictsafe.com/?filter=all-tips')">
-        <div class="card-left"><span class="icon">⚽</span>Free Predictions</div>
-        <span class="arrow">›</span>
+        ⚽ Free Predictions
     </div>
 
     <div class="card" onclick="openPage('https://www.predictsafe.com/previous-wins')">
-        <div class="card-left"><span class="icon">🏆</span>Previous VIP Wins</div>
-        <span class="arrow">›</span>
+        🏆 Previous VIP Wins
     </div>
 
     <div class="card" onclick="openPage('https://www.predictsafe.com/subscriptions')">
-        <div class="card-left"><span class="icon">💎</span>VIP Packages</div>
-        <span class="arrow">›</span>
+        💎 VIP Packages
     </div>
 
     <div class="card" onclick="openPage('https://www.predictsafe.com/vip')">
-        <div class="card-left"><span class="icon">👑</span>VIP Games</div>
-        <span class="arrow">›</span>
+        👑 VIP Games
     </div>
 
-    <div class="card" onclick="openPage('https://www.predictsafe.com/login?returnUrl=%2Fcheckout%3Fplan%3Dcorrect-score')">
-        <div class="card-left"><span class="icon">🎯</span>Correct Score</div>
-        <span class="arrow">›</span>
+    <div class="card" onclick="openPage('https://www.predictsafe.com/login')">
+        🎯 Correct Score
     </div>
 
-    <div class="card" onclick="openTelegram()">
-        <div class="card-left"><span class="icon">📲</span>Join Telegram</div>
-        <span class="arrow">›</span>
-    </div>
-
-    <div class="card" onclick="openPage('https://www.predictsafe.com/terms')">
-        <div class="card-left"><span class="icon">📄</span>Terms & Conditions</div>
-        <span class="arrow">›</span>
-    </div>
-
-    <div class="card" onclick="openWhatsApp()">
-        <div class="card-left"><span class="icon">💬</span>Chat With Us</div>
-        <span class="arrow">›</span>
-    </div>
+    <div class="card" onclick="openTelegram()">📲 Join Telegram</div>
+    <div class="card" onclick="openWhatsApp()">💬 Chat With Us</div>
 
 </div>
 
-<!-- VIEWER -->
-<div id="viewer">
-    <button class="back-btn" onclick="goBack()">← Back</button>
-    <iframe id="frame"></iframe>
-</div>
-
-<script>
-let deferredPrompt;
-
-/* INSTALL PROMPT */
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    document.getElementById("installCard").style.display = "block";
-});
-
-function installApp() {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(() => {
-            deferredPrompt = null;
-        });
-    }
-}
-
-function hideInstall() {
-    document.getElementById("installCard").style.display = "none";
-}
-
-/* NAVIGATION */
-function openPage(url) {
-    document.getElementById("home").style.display = "none";
-    document.getElementById("viewer").style.display = "block";
-    document.getElementById("frame").src = url;
-}
-
-function goBack() {
-    document.getElementById("viewer").style.display = "none";
-    document.getElementById("home").style.display = "block";
-}
-
-/* LINKS */
-function openTelegram() {
-    window.open("https://t.me/YOUR_LINK", "_blank");
-}
-
-function openWhatsApp() {
-    window.open("https://wa.me/YOUR_NUMBER", "_blank");
-}
-
-/* SERVICE WORKER */
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js')
-    .then(() => console.log("Service Worker Registered"));
-}
-</script>
+<script src="app.js"></script>
 
 </body>
 </html>
